@@ -6,7 +6,7 @@
 CLKIN_NAME=clk_25m
 CLKIN=25
 
-clocks=(480p 25 720p 75 1080p30hz 79.75)
+clocks=(480p 25 720p 75 1080p30hz 80)
 
 for i in $(seq 1 $(("${#clocks[@]}"/2))) ; do
 	name="${clocks[$((2*(i - 1)))]}"
