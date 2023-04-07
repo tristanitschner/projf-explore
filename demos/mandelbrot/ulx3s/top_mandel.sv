@@ -40,7 +40,7 @@ module top_mandel (
 	   .clk_pix,
 	   .LOCK(clk_pix_locked)
 	);
-	logic clk_sys = clk_25mhz;
+	logic clk_sys = clk_pix; // use pix clock, to be somewhat faster
 	logic rst_sys;
     always_ff @(posedge clk_sys) rst_sys <= !clk_pix_locked;  // wait for clock lock
 
@@ -368,26 +368,6 @@ module top_mandel (
 		.vs (vsync),
 		.gpdi_dp
 	);
-
-
-//     // display colour: paint colour but black in blanking interval
-//     /* verilator lint_off UNUSED */
-//     logic [CHANW-1:0] display_r, display_g, display_b;
-//     /* verilator lint_on UNUSED */
-//     always_comb begin
-//         display_r = (de) ? paint_r : 8'h0;
-//         display_g = (de) ? paint_g : 8'h0;
-//         display_b = (de) ? paint_b : 8'h0;
-//     end
-// 
-//     // VGA signals (4 bits per colour channel)
-//     always_ff @(posedge clk_pix) begin
-//         vga_hsync <= hsync;
-//         vga_vsync <= vsync;
-//         vga_r <= display_r[7:4];  // future improvement: dither output
-//         vga_g <= display_g[7:4];
-//         vga_b <= display_b[7:4];
-//     end
 
     // show status with LEDs
     always_ff @(posedge clk_sys) begin

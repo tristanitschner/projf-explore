@@ -12,21 +12,23 @@ FPGA_TYPE = 85k
 PCF       = $(PATH_LIB)/boards/ulx3s/ulx3s_v20.lpf
 
 # included modules
+ADD_SRC += ${PATH_LIB}/clock/ulx3s/clock_1080p30hz.v
 ADD_SRC += ${PATH_LIB}/clock/ulx3s/clock_480p.v
 ADD_SRC += ${PATH_LIB}/clock/ulx3s/clock_720p.v
-ADD_SRC += ${PATH_LIB}/display/ulx3s/pix2gpdi.sv
-ADD_SRC += ${PATH_LIB}/display/ulx3s/tmds_8b_10b.sv
 ADD_SRC += ${PATH_LIB}/display/bitmap_addr.sv
-ADD_SRC += ${PATH_LIB}/display/display_720p.sv
+ADD_SRC += ${PATH_LIB}/display/display_1080p.sv
 ADD_SRC += ${PATH_LIB}/display/display_480p.sv
+ADD_SRC += ${PATH_LIB}/display/display_720p.sv
 ADD_SRC += ${PATH_LIB}/display/linebuffer_simple.sv
 ADD_SRC += ${PATH_LIB}/display/tmds_encoder_dvi.sv
-ADD_SRC += ${PATH_LIB}/essential/xc7/async_reset.sv
+ADD_SRC += ${PATH_LIB}/display/ulx3s/pix2gpdi.sv
+ADD_SRC += ${PATH_LIB}/display/ulx3s/tmds_8b_10b.sv
 ADD_SRC += ${PATH_LIB}/essential/debounce.sv
+ADD_SRC += ${PATH_LIB}/essential/xc7/async_reset.sv
 ADD_SRC += ${PATH_LIB}/maths/mul.sv
 ADD_SRC += ${PATH_LIB}/memory/bram_sdp.sv
-ADD_SRC += ../render_mandel.sv
 ADD_SRC += ../mandelbrot.sv
+ADD_SRC += ../render_mandel.sv
 
 all: mandelbrot
 
